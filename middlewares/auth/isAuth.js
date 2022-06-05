@@ -33,6 +33,10 @@ const isAuth = async (req, res, next) => {
 
   const currentUser = await User.findById(decoded.id)
 
+  if (!currentUser) {
+    return next(appError(401, '非法Token', next));
+  }
+
   req.user = currentUser
   return next()
 }

@@ -1,7 +1,6 @@
 const _ = require('lodash')
 const Post = require('../models/PostModel')
 const Comment = require('../models/CommentsModel')
-const appError = require('../middlewares/errorHandlers/appErrorHandler')
 
 // 取得所有貼文列表
 async function getPosts(req, res) {
@@ -60,12 +59,13 @@ async function deletePosts(req, res) {
 }
 
 // 刪除指定
-async function deletePost(req, res, next) {
+async function deletePost(req, res) {
   const id = req.url.split('/').pop()
-  if (!!id && await Post.findByIdAndDelete(id)) {
-    next(appError(404, "刪除失敗：Post找不到該id", next))
-  }
-  await getPosts(req, res)
+  await Post.findByIdAndDelete(id)
+  res.status(200).json({
+    status: 'success',
+    message: '刪除成功!'
+  })
 }
 
 // 編輯指定

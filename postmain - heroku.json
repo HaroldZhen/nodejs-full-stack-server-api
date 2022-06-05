@@ -1,98 +1,16 @@
 {
 	"info": {
-		"_postman_id": "404c0f2d-7294-40e9-953e-644cd594e665",
-		"name": "Week7 - Heroku",
+		"_postman_id": "0b527f8e-f6af-4f0a-a11d-b7393ebdefc5",
+		"name": "Week8 - Heroku",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "3992779"
 	},
 	"item": [
 		{
-			"name": "Users",
+			"name": "會員功能 Users",
 			"item": [
 				{
-					"name": "Get:User/Profile",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://afternoon-badlands-76998.herokuapp.com/users/profile",
-							"protocol": "https",
-							"host": [
-								"afternoon-badlands-76998",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"users",
-								"profile"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get:User/Upload",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "image",
-									"type": "file",
-									"src": "/Users/harold/Desktop/screenshot/Xnip2022-06-02_00-07-41.jpg"
-								}
-							]
-						},
-						"url": {
-							"raw": "https://afternoon-badlands-76998.herokuapp.com/users/upload",
-							"protocol": "https",
-							"host": [
-								"afternoon-badlands-76998",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"users",
-								"upload"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update:User/profile",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"TRay\",\n    \"gender\": \"male\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://afternoon-badlands-76998.herokuapp.com/users/profile",
-							"protocol": "https",
-							"host": [
-								"afternoon-badlands-76998",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"users",
-								"profile"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "SignIn",
+					"name": "註冊會員 SignUp",
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -107,47 +25,13 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"account\": \"harold@gmail.com\",\n    \"password\": \"password\"\n}"
+							"raw": "{\n    \"account\": \"cindy@gmail.com\",\n    \"name\": \"cindy\",\n    \"password\": \"password@123\"\n}"
 						},
 						"url": {
-							"raw": "https://afternoon-badlands-76998.herokuapp.com/users/sign_in",
+							"raw": "https://pure-coast-73592.herokuapp.com/users/sign_up",
 							"protocol": "https",
 							"host": [
-								"afternoon-badlands-76998",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"users",
-								"sign_in"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "SignUp",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json;charset=utf-8",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"account\": \"harold@gmail.com\",\n    \"name\": \"harold\",\n    \"password\": \"password\"\n}"
-						},
-						"url": {
-							"raw": "https://afternoon-badlands-76998.herokuapp.com/users/sign_up",
-							"protocol": "https",
-							"host": [
-								"afternoon-badlands-76998",
+								"pure-coast-73592",
 								"herokuapp",
 								"com"
 							],
@@ -160,7 +44,41 @@
 					"response": []
 				},
 				{
-					"name": "UpdatePassword",
+					"name": "登入會員 SignIn",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=utf-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"account\": \"harold@gmail.com\",\n    \"password\": \"Haxrold\"\n}"
+						},
+						"url": {
+							"raw": "https://pure-coast-73592.herokuapp.com/users/sign_in",
+							"protocol": "https",
+							"host": [
+								"pure-coast-73592",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"sign_in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "重設密碼 UpdatePassword",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -175,10 +93,10 @@
 							"raw": "{\n    \"password\": \"Haxrold\",\n    \"confirm_password\": \"Haxrold\"\n}"
 						},
 						"url": {
-							"raw": "https://afternoon-badlands-76998.herokuapp.com/users/update_password",
+							"raw": "https://pure-coast-73592.herokuapp.com/users/update_password",
 							"protocol": "https",
 							"host": [
-								"afternoon-badlands-76998",
+								"pure-coast-73592",
 								"herokuapp",
 								"com"
 							],
@@ -189,52 +107,115 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "取得個人資料 Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://pure-coast-73592.herokuapp.com/users/profile",
+							"protocol": "https",
+							"host": [
+								"pure-coast-73592",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新個人資料 profile",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"TRay\",\n    \"gender\": \"male\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pure-coast-73592.herokuapp.com/users/profile",
+							"protocol": "https",
+							"host": [
+								"pure-coast-73592",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{local_token_week8}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		},
 		{
-			"name": "Posts",
+			"name": "會員按讚追蹤動態",
 			"item": [
 				{
-					"name": "/posts",
+					"name": "追蹤朋友 follow",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "https://afternoon-badlands-76998.herokuapp.com/posts",
+							"raw": "https://pure-coast-73592.herokuapp.com/users/:userid/follow",
 							"protocol": "https",
 							"host": [
-								"afternoon-badlands-76998",
+								"pure-coast-73592",
 								"herokuapp",
 								"com"
 							],
 							"path": [
-								"posts"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/posts(sort: createdAt)",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://afternoon-badlands-76998.herokuapp.com/posts?timeSort=asc",
-							"protocol": "https",
-							"host": [
-								"afternoon-badlands-76998",
-								"herokuapp",
-								"com"
+								"users",
+								":userid",
+								"follow"
 							],
-							"path": [
-								"posts"
-							],
-							"query": [
+							"variable": [
 								{
-									"key": "timeSort",
-									"value": "asc"
+									"key": "userid",
+									"value": "629c4cb0ae7d6bde452cb06f"
 								}
 							]
 						}
@@ -242,25 +223,36 @@
 					"response": []
 				},
 				{
-					"name": "/posts(keyword)",
+					"name": "取消追蹤朋友 unfollow",
 					"request": {
-						"method": "GET",
+						"method": "DELETE",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "https://afternoon-badlands-76998.herokuapp.com/posts?q=Hello",
+							"raw": "https://pure-coast-73592.herokuapp.com/users/:userid/unfollow",
 							"protocol": "https",
 							"host": [
-								"afternoon-badlands-76998",
+								"pure-coast-73592",
 								"herokuapp",
 								"com"
 							],
 							"path": [
-								"posts"
+								"users",
+								":userid",
+								"unfollow"
 							],
-							"query": [
+							"variable": [
 								{
-									"key": "q",
-									"value": "Hello"
+									"key": "userid",
+									"value": "628132543882b22d616f58ac"
 								}
 							]
 						}
@@ -268,7 +260,173 @@
 					"response": []
 				},
 				{
-					"name": "POST",
+					"name": "取得個人按讚文章列表 getLikeList",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://pure-coast-73592.herokuapp.com/users/posts/likes",
+							"protocol": "https",
+							"host": [
+								"pure-coast-73592",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"posts",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得個人追蹤名單 following",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://pure-coast-73592.herokuapp.com/users/following",
+							"protocol": "https",
+							"host": [
+								"pure-coast-73592",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"following"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "動態貼文",
+			"item": [
+				{
+					"name": "GET 取得所有貼文 /posts",
+					"item": [
+						{
+							"name": "取得所有貼文 /posts (sort: createdAt)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://pure-coast-73592.herokuapp.com/posts?timeSort=asc",
+									"protocol": "https",
+									"host": [
+										"pure-coast-73592",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"posts"
+									],
+									"query": [
+										{
+											"key": "timeSort",
+											"value": "asc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "取得所有貼文 /posts (keyword)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://pure-coast-73592.herokuapp.com/posts?q=Hello",
+									"protocol": "https",
+									"host": [
+										"pure-coast-73592",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"posts"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "Hello"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "取得所有貼文 /posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://pure-coast-73592.herokuapp.com/posts",
+							"protocol": "https",
+							"host": [
+								"pure-coast-73592",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得單一貼文 /posts/{postID}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://pure-coast-73592.herokuapp.com/posts/62779464d789a2a62a54e4d8",
+							"protocol": "https",
+							"host": [
+								"pure-coast-73592",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"posts",
+								"62779464d789a2a62a54e4d8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增貼文 /posts",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -283,10 +441,10 @@
 							"raw": "{\n    \"email\": \"harold@gmail.com\",\n    \"name\": \"Harold\",\n    \"content\": \"Hello everyone\"\n}"
 						},
 						"url": {
-							"raw": "https://afternoon-badlands-76998.herokuapp.com/posts",
+							"raw": "https://pure-coast-73592.herokuapp.com/posts",
 							"protocol": "https",
 							"host": [
-								"afternoon-badlands-76998",
+								"pure-coast-73592",
 								"herokuapp",
 								"com"
 							],
@@ -298,27 +456,7 @@
 					"response": []
 				},
 				{
-					"name": "DELET ALL",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "https://afternoon-badlands-76998.herokuapp.com/posts",
-							"protocol": "https",
-							"host": [
-								"afternoon-badlands-76998",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"posts"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DELET ROW",
+					"name": "刪除貼文 /posts/{postID}",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -329,10 +467,10 @@
 							}
 						],
 						"url": {
-							"raw": "https://afternoon-badlands-76998.herokuapp.com/post/:id",
+							"raw": "https://pure-coast-73592.herokuapp.com/post/:id",
 							"protocol": "https",
 							"host": [
-								"afternoon-badlands-76998",
+								"pure-coast-73592",
 								"herokuapp",
 								"com"
 							],
@@ -343,7 +481,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": " "
+									"value": "629cac4facf8e38855d28189"
 								}
 							]
 						}
@@ -351,7 +489,7 @@
 					"response": []
 				},
 				{
-					"name": "PATCH(edit)",
+					"name": "編輯貼文 /posts/{postID}",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -366,10 +504,10 @@
 							"raw": "{\n    \"content\": \"Hi people\"\n}"
 						},
 						"url": {
-							"raw": "https://afternoon-badlands-76998.herokuapp.com/posts/:id",
+							"raw": "https://pure-coast-73592.herokuapp.com/posts/:id",
 							"protocol": "https",
 							"host": [
-								"afternoon-badlands-76998",
+								"pure-coast-73592",
 								"herokuapp",
 								"com"
 							],
@@ -386,6 +524,285 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "新增一則貼文的讚 /posts/{postID}/like",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://pure-coast-73592.herokuapp.com/posts/:id/likes",
+							"protocol": "https",
+							"host": [
+								"pure-coast-73592",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"posts",
+								":id",
+								"likes"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "62779464d789a2a62a54e4d8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取消一則貼文的讚 /posts/{postID}/unlike",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://pure-coast-73592.herokuapp.com/posts/:id/likes",
+							"protocol": "https",
+							"host": [
+								"pure-coast-73592",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"posts",
+								":id",
+								"likes"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "62779464d789a2a62a54e4d8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增一則貼文的留言 /posts/{postID}/comment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comment\": \"Hi\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pure-coast-73592.herokuapp.com/posts/:id/comment",
+							"protocol": "https",
+							"host": [
+								"pure-coast-73592",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"posts",
+								":id",
+								"comment"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "62779464d789a2a62a54e4d8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得個人所有貼文列表 /post/user/{userID}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://pure-coast-73592.herokuapp.com/post/user/:id",
+							"protocol": "https",
+							"host": [
+								"pure-coast-73592",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"post",
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "628132035f1eb3dca5031430"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "額外新增",
+			"item": [
+				{
+					"name": "刪除一則留言 /posts/comment/{commentID}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comment\": \"Hi\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pure-coast-73592.herokuapp.com/posts/comment/:id",
+							"protocol": "https",
+							"host": [
+								"pure-coast-73592",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"posts",
+								"comment",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "其他",
+			"item": [
+				{
+					"name": "刪除所有貼文 /posts/all",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://pure-coast-73592.herokuapp.com/posts/all",
+							"protocol": "https",
+							"host": [
+								"pure-coast-73592",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"posts",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "上傳圖片 /upload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/harold/Desktop/screenshot/Xnip2022-06-05_19-47-00.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://pure-coast-73592.herokuapp.com/upload",
+							"protocol": "https",
+							"host": [
+								"pure-coast-73592",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		}
@@ -395,7 +812,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOGI0Yzc1ZjY1ODY4MTAzODY4Y2Q0ZiIsImlhdCI6MTY1NDEwMDU4OSwiZXhwIjoxNjU0MTA0MTg5fQ.KWFkgWEiTTYMQmOpn2JTtMir_CIqh26LfCIf_ikEiko",
+				"value": "{{heroku_token_week8}}",
 				"type": "string"
 			}
 		]

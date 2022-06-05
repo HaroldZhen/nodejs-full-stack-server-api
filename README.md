@@ -1,6 +1,6 @@
-web: https://afternoon-badlands-76998.herokuapp.com/
+web: https://pure-coast-73592.herokuapp.com/
 
-# Week7
+# Week8
 ## Backend:
-- heroku: afternoon-badlands-76998 herokuapp.com
+- heroku: pure-coast-73592 herokuapp.com
 - mongo: WEEK5-NODE-FULL-STACK

@@ -3,7 +3,6 @@ const User = require('../../models/UserModel')
 const appError = require("../errorHandlers/appErrorHandler")
 
 const isAuth = async (req, res, next) => {
-  console.log('isAuth')
   // 確認 token 是否存在
   let token;
   if (
@@ -13,8 +12,6 @@ const isAuth = async (req, res, next) => {
     // eslint-disable-next-line prefer-destructuring
     token = req.headers.authorization.split(' ').pop();
   }
-
-  console.log(token)
 
   if (!token) {
     return next(appError(401, '你尚未登入！', next));

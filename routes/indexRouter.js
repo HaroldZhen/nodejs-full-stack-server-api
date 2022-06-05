@@ -2,7 +2,6 @@ const express = require('express')
 const {ImgurClient} = require("imgur")
 const utils = require("../helper/utils")
 const isAuth = require("../middlewares/auth/isAuth")
-const asyncErrorHandler = require("../middlewares/errorHandlers/asyncErrorHandler")
 
 const router = express.Router()
 
@@ -15,7 +14,7 @@ router.get('/', (req, res, next) => {
 
 // Router: /upload
 // 上傳圖片
-router.post('/upload', isAuth, asyncErrorHandler((req, res) => {
+router.post('/upload', isAuth, (req, res) => {
   utils.upload(req, res, async () => {
     const client = new ImgurClient({
       clientId: process.env.IMGUR_CLIENTID,
@@ -29,6 +28,6 @@ router.post('/upload', isAuth, asyncErrorHandler((req, res) => {
     });
     res.send({url: response.data.link})
   })
-}))
+})
 
 module.exports = router

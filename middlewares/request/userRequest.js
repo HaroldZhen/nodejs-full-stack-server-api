@@ -1,5 +1,5 @@
 const validator = require('validator').default
-const appError = require("../errorHandlers/appErrorHandler");
+const appError = require("../errorHandlers/appErrorHandler")
 const User = require('../../models/UserModel')
 
 const userCreateRequest = async (req, res, next) => {
@@ -120,14 +120,14 @@ const userUpdatePasswordRequest = async (req, res, next) => {
 
 const userFollowRequest = async (req, res, next) => {
   if (req.params.id === req.user.id) {
-    next(appError(401, '您無法追蹤自己', next));
+    next(appError(401, '您無法追蹤自己', next))
   }
   next()
 }
 
 const userUnFollowRequest = async (req, res, next) => {
   if (req.params.id === req.user.id) {
-    next(appError(401,'您無法取消追蹤自己',next));
+    next(appError(401,'您無法取消追蹤自己',next))
   }
   next()
 }

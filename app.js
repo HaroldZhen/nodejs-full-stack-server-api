@@ -10,6 +10,7 @@ const corsOptions = require('./configs/corsOptions')
 
 connectDB()
 
+
 const indexRouter = require('./routes/indexRouter')
 const postsRouter = require('./routes/postsRouter')
 const userRouter = require('./routes/usersRouter')
@@ -19,8 +20,8 @@ process.on('uncaughtException', err => {
   // eslint-disable-next-line no-console
   console.error('Uncaughted Exception！')
   // eslint-disable-next-line no-console
-  console.error(err);
-  process.exit(1);
+  console.error(err)
+  process.exit(1)
 });
 
 const app = express()
@@ -46,36 +47,35 @@ const resErrorProd = (err, res) => {
   if (err.isOperational) {
     res.status(err.statusCode).json({
       message: err.message
-    });
+    })
   } else {
     // log 紀錄
     // eslint-disable-next-line no-console
-    console.error('出現重大錯誤', err);
+    console.error('出現重大錯誤', err)
     // 送出罐頭預設訊息
     res.status(500).json({
       status: 'error',
       message: '系統錯誤，請恰系統管理員'
-    });
+    })
   }
-};
+}
 // 開發環境錯誤
-const resErrorDev = (err, res) => {
-  res.status(err.statusCode).json({
+const resErrorDev = (err, res) => res.status(err.statusCode).json({
     message: err.message,
     error: err,
     stack: err.stack
-  });
-};
+  })
 
 // 錯誤處理
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
+  console.log('錯誤處理')
   // dev
   // eslint-disable-next-line no-param-reassign
   err.statusCode = err.statusCode || 500;
   if (process.env.NODE_ENV === 'dev') {
     // eslint-disable-next-line no-param-reassign
     console.error(err)
-    return resErrorDev(err, res);
+    return resErrorDev(err, res)
   }
   // production
   if (err.name === 'ValidationError'){
@@ -86,13 +86,13 @@ app.use((err, req, res, next) => {
     return resErrorProd(err, res)
   }
   return resErrorProd(err, res)
-});
+})
 
 
 // 未捕捉到的 catch
 process.on('unhandledRejection', (err, promise) => {
   // eslint-disable-next-line no-console
-  console.error('未捕捉到的 rejection：', promise, '原因：', err);
-});
+  console.error('未捕捉到的 rejection：', promise, '原因：', err)
+})
 
 module.exports = app

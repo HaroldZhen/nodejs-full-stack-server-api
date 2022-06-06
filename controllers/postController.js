@@ -1,6 +1,7 @@
 const _ = require('lodash')
 const Post = require('../models/PostModel')
 const Comment = require('../models/CommentsModel')
+const appError = require("../middlewares/errorHandlers/appErrorHandler")
 
 // 取得所有貼文列表
 async function getPosts(req, res) {
@@ -14,9 +15,14 @@ async function getPosts(req, res) {
 }
 
 // 取得指定貼文列表
-async function getPost(req, res) {
+async function getPost(req, res, next) {
   const {id: _id} = req.params;
-  const post = await Post.find({_id});
+  const post = await Post.find({_id})
+
+  if (_.isEmpty(post)) {
+    next(appError(400, '找不到該文章ID', next))
+  }
+
   res.status(200).json({
     statue: 200,
     data: post,

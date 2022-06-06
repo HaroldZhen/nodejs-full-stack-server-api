@@ -10,11 +10,11 @@ const isAuth = async (req, res, next) => {
     req.headers.authorization.startsWith('Bearer')
   ) {
     // eslint-disable-next-line prefer-destructuring
-    token = req.headers.authorization.split(' ').pop();
+    token = req.headers.authorization.split(' ').pop()
   }
 
   if (!token) {
-    return next(appError(401, '你尚未登入！', next));
+    return next(appError(401, '你尚未登入！', next))
   }
 
   // 驗證 token 正確性
@@ -31,7 +31,7 @@ const isAuth = async (req, res, next) => {
   const currentUser = await User.findById(decoded.id)
 
   if (!currentUser) {
-    return next(appError(401, '非法Token', next));
+    return next(appError(401, '非法Token', next))
   }
 
   req.user = currentUser

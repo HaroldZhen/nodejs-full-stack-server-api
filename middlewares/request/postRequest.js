@@ -1,5 +1,5 @@
 const validator = require('validator').default
-const appError = require("../errorHandlers/appErrorHandler");
+const appError = require("../errorHandlers/appErrorHandler")
 
 const postCreateRequest = (req, res, next) => {
   const error = []

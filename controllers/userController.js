@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const User = require('../models/UserModel')
 const appError = require('../middlewares/errorHandlers/appErrorHandler')
-const Post = require("../models/PostModel");
+const Post = require("../models/PostModel")
 
 const STATUE_SUCCESS = 'success'
 
@@ -17,19 +17,19 @@ async function signIn(req, res, next) {
   }).select('+password')
 
   if (!user) {
-    next(appError(400, '該帳號不存在', next));
+    next(appError(400, '該帳號不存在', next))
   }
 
   const isAuth = await bcrypt.compare(password, user.get('password'))
   user.password = null
   if (!isAuth) {
-    next(appError(400, '您的密碼不正確', next));
+    next(appError(400, '您的密碼不正確', next))
   }
 
   // 產生 JWT token
   const token = jwt.sign({
     id: user.get('_id')
-  }, process.env.JWT_SECRET, {expiresIn: 60 * 60 * 24});
+  }, process.env.JWT_SECRET, {expiresIn: 60 * 60 * 24})
 
   res.status(200).json({
     status: STATUE_SUCCESS,
@@ -126,9 +126,9 @@ async function followingUser(req, res) {
 
   const following = currentUser.following.map((item) => ({
     // eslint-disable-next-line no-underscore-dangle
-      id: item.user._id,
-      name: item.user.name,
-    }))
+    id: item.user._id,
+    name: item.user.name,
+  }))
 
   res.status(200).json({
     status: STATUE_SUCCESS,
@@ -150,7 +150,7 @@ async function followUser(req, res) {
     {
       $addToSet: {following: {user: targetUserId}}
     }
-  );
+  )
   await User.updateOne(
     {
       _id: targetUserId,
@@ -159,11 +159,11 @@ async function followUser(req, res) {
     {
       $addToSet: {followers: {user: ownerUserId}}
     }
-  );
+  )
   res.status(200).json({
     status: STATUE_SUCCESS,
     message: '您已成功追蹤！'
-  });
+  })
 }
 
 // 取消追蹤
@@ -177,7 +177,7 @@ async function unFollowUser(req, res) {
     {
       $pull: {following: {user: targetUserId}}
     }
-  );
+  )
   await User.updateOne(
     {
       _id: targetUserId,
@@ -185,25 +185,25 @@ async function unFollowUser(req, res) {
     {
       $pull: {followers: {user: ownerUserId}}
     }
-  );
+  )
   res.status(200).json({
     status: STATUE_SUCCESS,
     message: '您已成功取消追蹤！'
-  });
+  })
 }
 
 // 取得按讚文章列表
 async function postsLikesList(req, res) {
   const likeList = await Post.find({
-    likes: { $in: [req.user.id] }
+    likes: {$in: [req.user.id]}
   }).populate({
-    path:"user",
-    select:"name _id"
-  });
+    path: "user",
+    select: "name _id"
+  })
   res.status(200).json({
     status: 'success',
     likeList
-  });
+  })
 }
 
 module.exports = {
